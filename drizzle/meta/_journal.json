@@ -8,6 +8,13 @@
       "when": 1728167363763,
       "tag": "0000_early_dagger",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1728167609921,
+      "tag": "0001_careless_smiling_tiger",
+      "breakpoints": true
     }
   ]
 }
