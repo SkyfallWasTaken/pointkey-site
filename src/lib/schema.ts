@@ -17,3 +17,6 @@ export const users = sqliteTable('users', {
 	name: text('name').notNull(),
 	email: text('email').notNull().unique()
 });
+
+export const Comment = comments.$inferSelect;
+export const User = users.$inferSelect;
