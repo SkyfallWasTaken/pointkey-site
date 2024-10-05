@@ -1,5 +1,5 @@
 CREATE TABLE `comments` (
-	`url` text,
+	`url` text NOT NULL,
 	`author_id` text NOT NULL,
 	`upvotes` integer DEFAULT 0 NOT NULL,
 	`downvotes` integer DEFAULT 0 NOT NULL,

@@ -2,7 +2,7 @@ import { sql } from 'drizzle-orm';
 import { text, integer, sqliteTable } from 'drizzle-orm/sqlite-core';
 
 export const comments = sqliteTable('comments', {
-	url: text('url'),
+	url: text('url').notNull(),
 	authorId: text('author_id').notNull(),
 	upvotes: integer('upvotes').notNull().default(0),
 	downvotes: integer('downvotes').notNull().default(0),
