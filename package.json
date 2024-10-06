@@ -18,6 +18,7 @@
     "@sveltejs/adapter-auto": "^3.2.5",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "0.5.15",
     "@types/eslint": "^9.6.0",
     "@types/node": "22.7.4",
@@ -42,9 +43,13 @@
   "dependencies": {
     "@floating-ui/dom": "1.6.11",
     "@libsql/client": "^0.14.0",
+    "@tiptap/core": "^2.8.0",
+    "@tiptap/pm": "^2.8.0",
+    "@tiptap/starter-kit": "^2.8.0",
     "date-fns": "^4.1.0",
     "drizzle-orm": "^0.33.0",
     "highlight.js": "11.10.0",
+    "lucide-svelte": "^0.447.0",
     "node-html-parser": "^6.1.13"
   }
 }
