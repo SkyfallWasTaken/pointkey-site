@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { BoldIcon, ItalicIcon, StrikethroughIcon } from 'lucide-svelte';
-
 	import { onMount, onDestroy } from 'svelte';
 	import { enhance } from '$app/forms';
 	import { Editor } from '@tiptap/core';
@@ -9,7 +8,6 @@
 
 	let element: HTMLDivElement | null;
 	let editor;
-	let form;
 	let html = '';
 
 	export let url: string;
@@ -29,7 +27,7 @@
 			editorProps: {
 				attributes: {
 					class:
-						'prose dark:prose-invert prose-sm max-w-none sm:prose-base m-3 leading-none focus:outline-none'
+						'prose dark:prose-invert prose-sm max-w-none sm:prose-base m-3 min-h-36 leading-none focus:outline-none'
 				}
 			},
 			content: '',
@@ -46,6 +44,8 @@
 			editor.destroy();
 		}
 	});
+
+	let form;
 </script>
 
 <div class="rounded-lg flex flex-col gap-2 border border-surface-500 p-4">
@@ -79,10 +79,10 @@
 			>
 		</header>
 	{/if}
-	<div bind:this={element} class="border-[1px] border-surface-500 rounded-lg" />
-	<form bind:this={form} method="POST" action={`?/add`} enctype="multipart/form-data" use:enhance>
+	<form bind:this={form} method="POST" use:enhance>
 		<input type="hidden" name="url" value={url} />
-		<input type="hidden" name="content" bind:value={html} />
+		<input type="hidden" name="content" value={html} />
+		<div bind:this={element} class="border-[1px] border-surface-500 rounded-lg" />
 	</form>
 </div>
 

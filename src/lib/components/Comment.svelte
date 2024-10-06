@@ -32,5 +32,5 @@
 			</div>
 		</div>
 	</header>
-	<p>{comment.content}</p>
+	<p>{@html comment.content}</p>
 </div>

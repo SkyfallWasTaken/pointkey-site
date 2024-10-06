@@ -9,7 +9,7 @@
 <div class="flex flex-col gap-6">
 	<h1 class="text-3xl font-bold">{data.comments.length} comments on {data.url}</h1>
 	<Textarea url={data.url} />
-	<ul class="flex gap-2">
+	<ul class="flex flex-col gap-2">
 		{#each data.comments as comment}
 			<li>
 				<Comment {comment} />
