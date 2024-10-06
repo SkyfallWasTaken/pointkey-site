@@ -15,6 +15,13 @@
       "when": 1728167609921,
       "tag": "0001_careless_smiling_tiger",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1728168496259,
+      "tag": "0002_warm_iron_fist",
+      "breakpoints": true
     }
   ]
 }

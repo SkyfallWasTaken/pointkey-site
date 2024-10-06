@@ -5,6 +5,7 @@ export const comments = sqliteTable(
 	'comments',
 	{
 		url: text('url').notNull(),
+		content: text('content').notNull(),
 		authorId: text('author_id').notNull(),
 		upvotes: integer('upvotes').notNull().default(0),
 		downvotes: integer('downvotes').notNull().default(0),
