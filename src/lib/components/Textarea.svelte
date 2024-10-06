@@ -2,14 +2,20 @@
 	import { BoldIcon, ItalicIcon, StrikethroughIcon } from 'lucide-svelte';
 
 	import { onMount, onDestroy } from 'svelte';
+	import { enhance } from '$app/forms';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import Placeholder from '@tiptap/extension-placeholder';
 
 	let element: HTMLDivElement | null;
 	let editor;
+	let form;
+	let html = '';
+
+	export let url: string;
 
 	onMount(() => {
+		console.time('loadEditor');
 		editor = new Editor({
 			element,
 			extensions: [
@@ -29,8 +35,10 @@
 			content: '',
 			onTransaction: () => {
 				editor = editor;
+				html = editor?.getHTML();
 			}
 		});
+		console.timeEnd('loadEditor');
 	});
 
 	onDestroy(() => {
@@ -66,10 +74,16 @@
 					<StrikethroughIcon />
 				</button>
 			</div>
-			<button class="btn variant-filled-secondary ml-auto mr-2">Post</button>
+			<button class="btn variant-filled-secondary ml-auto mr-2" on:click={() => form.submit()}
+				>Post</button
+			>
 		</header>
 	{/if}
 	<div bind:this={element} class="border-[1px] border-surface-500 rounded-lg" />
+	<form bind:this={form} method="POST" action={`?/add`} enctype="multipart/form-data" use:enhance>
+		<input type="hidden" name="url" value={url} />
+		<input type="hidden" name="content" bind:value={html} />
+	</form>
 </div>
 
 <style>
