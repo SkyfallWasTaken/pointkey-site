@@ -12,7 +12,7 @@ export const comments = sqliteTable(
 		parentId: text('parent_id'), // For replies, null if it's a top-level comment
 		timestamp: text('timestamp')
 			.notNull()
-			.default(sql`CURRENT_TIMESTAMP`) // TZ is UTC
+			.default(sql`strftime('%s', 'now')`)
 	},
 	(table) => ({
 		authorIdIdx: index('author_id_idx').on(table.authorId),

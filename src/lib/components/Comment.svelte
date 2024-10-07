@@ -4,8 +4,12 @@
 	import { intlFormatDistance, format } from 'date-fns';
 
 	export let comment: typeof PkComment;
-	const relativeDate = intlFormatDistance(new Date(comment.timestamp), new Date());
-	const formattedDate = format(new Date(comment.timestamp), "EEEE, d MMMM yyyy 'at' h:mma");
+
+	const commentTs = new Date(Number(comment.timestamp) * 1000);
+	const currentTs = new Date();
+	console.log(comment.content, commentTs, currentTs);
+	const relativeDate = intlFormatDistance(commentTs, currentTs);
+	const formattedDate = format(commentTs, "EEEE, d MMMM yyyy 'at' h:mma");
 
 	const datePopupHover: PopupSettings = {
 		event: 'hover',
