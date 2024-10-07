@@ -7,7 +7,7 @@
 </script>
 
 <div class="flex flex-col gap-6">
-	<h1 class="text-3xl font-bold">{data.comments.length} comments on {data.url}</h1>
+	<h1 class="text-3xl font-bold">{data.comments.length || 'No'} comments on {data.url}</h1>
 	<Textarea url={data.url} />
 	<ul class="flex flex-col gap-2">
 		{#each data.comments as comment}
