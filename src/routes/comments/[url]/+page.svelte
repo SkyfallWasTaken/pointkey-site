@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import Comment from '$lib/components/Comment.svelte';
-	import Textarea from '$lib/components/Textarea.svelte';
+	import Editor from '$lib/components/Editor.svelte';
 	import { signIn } from '@auth/sveltekit/client';
 
 	export let data: PageData;
@@ -16,7 +16,7 @@
 			{data.comments.length == 1 ? 'comment' : 'comments'} on {data.url}
 		</h1>
 		{#if data.session}
-			<Textarea url={data.url} />
+			<Editor url={data.url} />
 		{:else}
 			<div
 				class="rounded-lg flex flex-col items-center text-center py-8 gap-2 border border-surface-500 p-4"
