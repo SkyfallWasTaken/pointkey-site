@@ -1,4 +1,7 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script lang="ts">
+	import { SignIn } from '@auth/sveltekit/components';
+</script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-5">
@@ -11,5 +14,6 @@
 				<code class="code">/src/routes/+page.svelte</code> - this page, you can replace the contents
 			</li>
 		</ul>
+		<SignIn provider="discord" signInPage="signin" />
 	</div>
 </div>

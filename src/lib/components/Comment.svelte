@@ -7,13 +7,13 @@
 
 	const commentTs = new Date(Number(comment.timestamp) * 1000);
 	const currentTs = new Date();
-	console.log(comment.content, commentTs, currentTs);
 	const relativeDate = intlFormatDistance(commentTs, currentTs);
 	const formattedDate = format(commentTs, "EEEE, d MMMM yyyy 'at' h:mma");
 
+	const hoverId = Math.random(); // Needed because otherwise the popup content is the same for all of them :/
 	const datePopupHover: PopupSettings = {
 		event: 'hover',
-		target: 'datePopupHover',
+		target: `datePopupHover-${hoverId}`,
 		placement: 'top'
 	};
 </script>
@@ -29,7 +29,7 @@
 				>
 				<div
 					class="rounded-lg px-3 py-1 variant-filled-secondary shadow-sm"
-					data-popup="datePopupHover"
+					data-popup={`datePopupHover-${hoverId}`}
 				>
 					<p>{formattedDate}</p>
 				</div>
