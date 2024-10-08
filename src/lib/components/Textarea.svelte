@@ -5,24 +5,27 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import Placeholder from '@tiptap/extension-placeholder';
+	import CharacterCount from '@tiptap/extension-character-count';
 
 	let element: HTMLDivElement | null;
-	let editor;
+	let editor: Editor | undefined;
 	let html = '';
+	let wordCount = 0;
 
 	export let url: string;
 
 	onMount(() => {
 		console.time('loadEditor');
 		editor = new Editor({
-			element,
+			element: element!,
 			extensions: [
 				StarterKit,
 				Placeholder.configure({
 					placeholder: "What's on your mind?",
 					emptyNodeClass:
 						'first:before:h-0 first:before:text-gray-400 first:before:float-left first:before:content-[attr(data-placeholder)] first:before:pointer-events-none'
-				})
+				}),
+				CharacterCount
 			],
 			editorProps: {
 				attributes: {
@@ -32,8 +35,9 @@
 			},
 			content: '',
 			onTransaction: () => {
-				editor = editor;
+				editor = editor!;
 				html = editor?.getHTML();
+				wordCount = editor?.storage.characterCount.words();
 			}
 		});
 		console.timeEnd('loadEditor');
@@ -74,8 +78,10 @@
 					<StrikethroughIcon />
 				</button>
 			</div>
-			<button class="btn variant-filled-secondary ml-auto mr-2" on:click={() => form.submit()}
-				>Post</button
+			<button
+				class="btn variant-filled-secondary ml-auto mr-2"
+				disabled={!wordCount}
+				on:click={() => form.submit()}>Post</button
 			>
 		</header>
 	{/if}
