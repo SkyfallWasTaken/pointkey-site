@@ -7,7 +7,9 @@
 	export let data: PageData;
 </script>
 
-<div class="flex flex-col gap-6">
+<div
+	class="flex flex-col gap-6 px-6 py-8 w-full md:w-5/6 lg:w-1/2 border-surface-600 border-2 rounded-md"
+>
 	<h1 class="text-3xl font-bold">
 		{data.comments.length || 'No'}
 		{data.comments.length == 1 ? 'comment' : 'comments'} on {data.url}
@@ -25,7 +27,7 @@
 	{/if}
 	<ul class="flex flex-col gap-2">
 		{#each data.comments as comment}
-			<li>
+			<li class="border-b border-surface-600 last:border-b-0 p-4 last:pb-0">
 				<Comment {comment} />
 			</li>
 		{/each}

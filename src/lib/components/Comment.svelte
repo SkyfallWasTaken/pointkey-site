@@ -18,7 +18,7 @@
 	};
 </script>
 
-<div class="p-4 variant-soft space-y-2 w-screen">
+<div class="space-y-2 w-full">
 	<header class="flex gap-3 items-center">
 		<Avatar src="https://i.pravatar.cc/?img=lorem" width="w-8" />
 		<div class="flex gap-2 items-center">

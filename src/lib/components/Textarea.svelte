@@ -48,7 +48,7 @@
 	let form;
 </script>
 
-<div class="rounded-lg flex flex-col gap-2 border border-surface-500 p-4">
+<div class="rounded-lg flex flex-col gap-3 border border-surface-500 p-4">
 	{#if editor}
 		<header class="flex gap-2 items-center">
 			<div class="flex bg-surface-500 border-surface-700 rounded-lg">
