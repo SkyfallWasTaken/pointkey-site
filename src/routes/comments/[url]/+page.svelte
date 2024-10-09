@@ -9,7 +9,7 @@
 
 <div class="flex justify-center items-center mt-8 md:mt-10 mx-4 md:mx-0">
 	<div
-		class="flex flex-col gap-6 shadow-sm px-6 py-8 w-full md:w-5/6 lg:w-1/2 border-surface-600 border-2 rounded-md"
+		class="flex flex-col gap-6 shadow-sm px-6 py-8 w-full md:w-5/6 lg:w-1/2 border-surface-600 border-2 rounded-lg"
 	>
 		<h1 class="text-3xl font-bold">
 			{data.comments.length || 'No'}

@@ -17,10 +17,17 @@ export async function load({ params }) {
 }
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, locals }) => {
 		const data = await request.formData();
 		const content = data.get('content');
 		const url = data.get('url');
+
+		const session = await locals.auth();
+		const user = session?.user;
+		if (!user) {
+			console.log(session, user);
+			return fail(401, { error: 'Unauthorized' });
+		}
 
 		if (!content) {
 			return fail(400, { content, missing: true });
@@ -34,7 +41,7 @@ export const actions = {
 			await db.insert(comments).values({
 				url: decodeURIComponent(url.toString()),
 				content: clean,
-				authorId: 'anonymous'
+				authorId: user.name || user.email || 'Anonymous' // FIXME: change
 			});
 			return { success: true };
 		} catch (error) {
