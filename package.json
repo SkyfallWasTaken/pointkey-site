@@ -56,6 +56,7 @@
     "drizzle-orm": "^0.34.0",
     "highlight.js": "11.10.0",
     "isomorphic-dompurify": "^2.16.0",
+    "lru-cache": "^11.0.1",
     "lucide-svelte": "^0.447.0",
     "node-html-parser": "^6.1.13"
   }

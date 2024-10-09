@@ -21,11 +21,18 @@ export const comments = sqliteTable(
 	})
 );
 
-export const users = sqliteTable('users', {
-	id: text('id').primaryKey(),
-	name: text('name').notNull(),
-	email: text('email').notNull().unique()
-});
+export const users = sqliteTable(
+	'users',
+	{
+		id: text('id').primaryKey(),
+		name: text('name').notNull(),
+		email: text('email').notNull().unique()
+	},
+	(table) => ({
+		idIdx: index('id_idx').on(table.id),
+		emailIdx: index('email_idx').on(table.email)
+	})
+);
 
 export const Comment = comments.$inferSelect;
 export const User = users.$inferSelect;

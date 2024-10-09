@@ -2,11 +2,13 @@ import { db, comments } from '$lib/db';
 import { eq } from 'drizzle-orm';
 import { fail } from '@sveltejs/kit';
 import DOMPurify from 'isomorphic-dompurify';
+import { pageTitles } from '$lib/pageTitle';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
 	return {
 		url: decodeURIComponent(params.url),
+		title: await pageTitles.fetch(params.url),
 		comments: await db
 			.select()
 			.from(comments)
@@ -25,7 +27,6 @@ export const actions = {
 		const session = await locals.auth();
 		const user = session?.user;
 		if (!user) {
-			console.log(session, user);
 			return fail(401, { error: 'Unauthorized' });
 		}
 
@@ -41,7 +42,7 @@ export const actions = {
 			await db.insert(comments).values({
 				url: decodeURIComponent(url.toString()),
 				content: clean,
-				authorId: user.name || user.email || 'Anonymous' // FIXME: change
+				authorId: user.name!
 			});
 			return { success: true };
 		} catch (error) {

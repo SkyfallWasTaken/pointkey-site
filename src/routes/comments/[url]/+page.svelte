@@ -13,7 +13,9 @@
 	>
 		<h1 class="text-3xl font-bold">
 			{data.comments.length || 'No'}
-			{data.comments.length == 1 ? 'comment' : 'comments'} on {data.url}
+			{data.comments.length == 1 ? 'comment' : 'comments'} on {data.title
+				? `"${data.title}"`
+				: data.url}
 		</h1>
 		{#if data.session}
 			<Editor url={data.url} />
