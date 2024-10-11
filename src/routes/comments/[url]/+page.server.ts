@@ -1,8 +1,9 @@
 import { db, comments } from '$lib/db';
 import { eq } from 'drizzle-orm';
 import { fail } from '@sveltejs/kit';
-import DOMPurify from 'isomorphic-dompurify';
 import { pageTitles } from '$lib/pageTitle';
+
+globalThis.window = globalThis.window || {};
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
