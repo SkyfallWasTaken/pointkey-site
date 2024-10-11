@@ -20,9 +20,9 @@
     "@sveltejs/vite-plugin-svelte": "^3.1.2",
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "0.5.15",
-    "@types/dompurify": "^3.0.5",
     "@types/eslint": "^9.6.1",
     "@types/node": "22.7.4",
+    "@types/sanitize-html": "^2.13.0",
     "autoprefixer": "10.4.20",
     "drizzle-kit": "^0.25.0",
     "eslint": "^9.12.0",
@@ -55,9 +55,9 @@
     "date-fns": "^4.1.0",
     "drizzle-orm": "^0.34.0",
     "highlight.js": "11.10.0",
-    "isomorphic-dompurify": "^2.16.0",
     "lru-cache": "^11.0.1",
     "lucide-svelte": "^0.447.0",
-    "node-html-parser": "^6.1.13"
+    "node-html-parser": "^6.1.13",
+    "sanitize-html": "^2.13.1"
   }
 }

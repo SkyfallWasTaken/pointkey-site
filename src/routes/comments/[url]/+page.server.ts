@@ -2,8 +2,7 @@ import { db, comments } from '$lib/db';
 import { eq } from 'drizzle-orm';
 import { fail } from '@sveltejs/kit';
 import { pageTitles } from '$lib/pageTitle';
-
-globalThis.window = globalThis.window || {};
+import sanitizeHtml from 'sanitize-html';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
@@ -38,7 +37,7 @@ export const actions = {
 			return fail(400, { url, missing: true });
 		}
 
-		const clean = DOMPurify.sanitize(content.toString());
+		const clean = sanitizeHtml(content.toString());
 		try {
 			await db.insert(comments).values({
 				url: decodeURIComponent(url.toString()),
